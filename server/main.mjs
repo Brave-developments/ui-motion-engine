@@ -6,7 +6,7 @@ import {SiteSession} from './browser.mjs';
 import {chooseStyle} from './director.mjs';
 import {STYLES} from './motion.mjs';
 import {validateSettings} from './security.mjs';
-import {renderProject,getJob,outputPath,framePath} from './render.mjs';
+import {renderProject,isRendering,getJob,outputPath,framePath} from './render.mjs';
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const APP_PORT=Number(process.env.MOTION_PORT||5085);
 const site=new SiteSession();
@@ -20,6 +20,7 @@ const server=http.createServer(async(req,res)=>{
   const pathname=new URL(req.url,'http://127.0.0.1:'+APP_PORT).pathname;
   if(req.method==='GET'&&pathname==='/api/status')return reply(res,200,{ok:true,version:'0.2.0',website:site.config?.url||null,selected:selected?.id||null,modelConfigured:!!process.env.GEMINI_API_KEY,styles:STYLES,implementation:'real DOM motion capture + Remotion MP4 assembly'});
   if(req.method==='POST'&&pathname==='/api/inspect'){
+    if(isRendering())return reply(res,409,{error:'Cannot replace the website during an active render'});
     const config=validateSettings(await json(req));selected=null;decision=null;
     const result=await site.start(config);return reply(res,200,result);
   }
@@ -29,6 +30,7 @@ const server=http.createServer(async(req,res)=>{
     res.writeHead(200,{'Content-Type':'image/png','Cache-Control':'no-store'});res.end(screenshot);return;
   }
   if(req.method==='POST'&&pathname==='/api/select'){
+    if(isRendering())return reply(res,409,{error:'Cannot replace the component during an active render'});
     const input=await json(req);selected=await site.select(String(input.targetId));decision=null;
     return reply(res,200,{selected,renderability:'REAL_SOURCE_DOM',warning:'Original React DOM is animated inside its source browser. An isolated JSX import adapter is not yet available.'});
   }
