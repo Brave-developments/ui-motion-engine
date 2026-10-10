@@ -20,3 +20,19 @@ jobs:
           for f in server/*.mjs scripts/*.mjs studio/app.js tests/*.mjs; do node --check "$f"; done
       - name: Unit tests and storyboard validation
         run: npm test
+
+  browser-to-mp4:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install dependencies and browsers
+        run: |
+          npm install
+          npx playwright install --with-deps chromium
+          npx remotion browser ensure
+      - name: Render genuine DOM fixture with Chromium and Remotion
+        run: node scripts/smoke-video.mjs
