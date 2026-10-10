@@ -7,12 +7,14 @@ const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const read = (filename) => fs.readFile(path.join(root, filename), 'utf8').then(JSON.parse);
 const ajv = new Ajv({ allErrors: true, strict: false });
 let failed = false;
+const compiledValidators = new Map();
 for (const [schemaFile, sampleFile] of [
   ['specs/ui-manifest.schema.json', 'specs/example.ui-manifest.json'],
   ['specs/storyboard.schema.json', 'specs/example.storyboard.json'],
 ]) {
   const [schema, sample] = await Promise.all([read(schemaFile), read(sampleFile)]);
   const check = ajv.compile(schema);
+  compiledValidators.set(schemaFile, check);
   if (check(sample)) console.log(`PASS ${sampleFile}`);
   else { console.error(`FAIL ${sampleFile}`, check.errors); failed = true; }
 }
@@ -32,8 +34,8 @@ if (manifest.components.some((c) => !c.verifiedImport)) console.log('EXPECTED WA
 
 // Preset templates are intentionally not bound to an approved source manifest yet.
 // Validate structural contracts and phase semantics without pretending these are render-ready.
-const storyboardSchema = await read('specs/storyboard.schema.json');
-const checkPreset = ajv.compile(storyboardSchema);
+const checkPreset = compiledValidators.get('specs/storyboard.schema.json');
+if (!checkPreset) throw new Error('Storyboard validator missing');
 for (const file of ['presets/fly-out-return-100.json', 'presets/orbit-3d-65.json']) {
   const preset = await read(file);
   if (!checkPreset(preset)) {
