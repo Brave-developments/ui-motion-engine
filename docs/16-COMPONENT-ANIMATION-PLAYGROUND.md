@@ -144,7 +144,7 @@ Full-strength parameters at a verified 1920×1080 canvas:
 | Child thumbnail | Optional pop up to 1.12× | Only if real child element is addressable |
 | Fire icon | Optional 24-frame deterministic particle burst | Do not increment count or fire backend action |
 
-Intensity percentage interpolates each non-geometric amplitude from 0 to its target. For intensity 0, preserve source card at the original position and disable all VFX, even if animation timeline markers remain. Timing may remain the same at every intensity. At 100%, use the numerical targets but honour fit/visibility/accessibility constraints.
+Intensity percentage multiplies **all motion deltas and effects**, including translation, scale delta, rotation, shadow, glow, background dim and blur. At intensity 0, the component must remain in the original slot (no translation, rotation or zoom) and all VFX are disabled, even if timeline markers remain. Timing may remain unchanged across intensities. At 100%, use the numerical targets but honour fit/visibility/accessibility constraints.
 
 **Important:** "100%" is an art-direction maximum, not permission to crop, distort, flicker aggressively or create fake content.
 
@@ -156,16 +156,18 @@ Let source rect already be mapped to canvas as origin = (x,y,w,h), centre C=(x+w
 const dx = focusX - (origin.x + origin.width / 2);
 const dy = focusY - (origin.y + origin.height / 2);
 const p = getBoundedLiftHoldReturnProgress(frame, phaseFrames); // exact endpoints
-const safetyScale = Math.min(
+const strength = clamp(intensityPercent / 100, 0, 1);
+const visualProgress = p * strength; // zero intensity = zero displacement
+const effectivePeakScale = Math.max(0.25, Math.min(
   1.85,
   (canvasWidth * 0.86) / origin.width,
   (canvasHeight * 0.78) / origin.height
-);
-const scale = 1 + (Math.max(1, safetyScale) - 1) * p;
-const translateX = dx * p;
-const translateY = dy * p;
-const rotateY = 16 * p;
-const rotateZ = -4 * p;
+));
+const scale = 1 + (effectivePeakScale - 1) * visualProgress;
+const translateX = dx * visualProgress;
+const translateY = dy * visualProgress;
+const rotateY = 16 * visualProgress;
+const rotateZ = -4 * visualProgress;
 ~~~
 
 The example is normative for intent but not a complete transform implementation. Implement origin-centre translations and transform order consistently; test world-space geometry under 3D rotation and camera matrices. An alternative spring animation is permitted only if progress is clamped/normalized so frame 15 and frame 145 are **exact identity**, not asymptotic tails. Camera positioning must account for projected card width/height, not just raw scale, at peak tilt.
