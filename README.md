@@ -73,6 +73,8 @@ flowchart TD
 | [`docs/07-EDITOR-AND-WORKFLOW.md`](docs/07-EDITOR-AND-WORKFLOW.md) | UI flow, preview, render and manual override |
 | [`docs/16-COMPONENT-ANIMATION-PLAYGROUND.md`](docs/16-COMPONENT-ANIMATION-PLAYGROUND.md) | **Detailed fly-out/return @ 100% playground implementation spec, architecture, frames, controls, tests and delivery gates** |
 | [`presets/fly-out-return-100.json`](presets/fly-out-return-100.json) | 180-frame storyboard template requiring a verified source component ID |
+| [`docs/17-3D-ORBIT-PLAYGROUND-65.md`](docs/17-3D-ORBIT-PLAYGROUND-65.md) | **3D Orbit at 65%** — detailed implementation spec covering authentic component selection, source React reuse, 240-frame orbit, CSS 3D perspective, QA and implementation gates |
+| [`presets/orbit-3d-65.json`](presets/orbit-3d-65.json) | 240-frame single-component 3D Orbit storyboard template (requires verified real UI source) |
 | [`docs/08-SECURITY-AND-RIGHTS.md`](docs/08-SECURITY-AND-RIGHTS.md) | Host sandboxing, credentials, licenses, provider/privacy handling |
 | [`docs/09-QUALITY-AND-TESTS.md`](docs/09-QUALITY-AND-TESTS.md) | Snapshot parity, motion tests, end-to-end acceptance |
 | [`docs/10-ROADMAP.md`](docs/10-ROADMAP.md) | Build phases, concrete tasks, stop/go gates |
