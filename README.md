@@ -2,7 +2,27 @@
 
 **A source-faithful React website → cinematic Remotion video workflow.**
 
-> **Repository status:** architecture, complete implementation plan, machine-readable contracts, working local DOM-inspection utility, validator and animation reference. **Not yet an end-to-end video generator.** No fake website UI, no imaginary completion claims.
+> **Repository status (v0.2):** a runnable local website inspector, motion-editor UI, eight frame-indexed styles, optional Gemini animation director, original-browser-DOM capture and Remotion MP4 assembly are implemented. **Full source-TSX component imports, child-level editing and production visual QA are not yet implemented.** Browser-to-MP4 integration is pending a real machine verification.
+
+## Run the local motion playground
+
+**This is now code, not only plans.** Start an authorized React site separately, then run the engine on your Windows PC:
+
+```powershell
+git clone https://github.com/Brave-developments/ui-motion-engine.git
+cd ui-motion-engine
+npm install
+npx playwright install chromium
+npx remotion browser ensure
+npm test
+npm run dev:playground
+```
+
+Open **http://127.0.0.1:5085**, inspect **http://127.0.0.1:5173/free** (with FiveM Resource Hub already running), click a genuine component, choose an animation automatically or manually, scrub frame previews, and render with Remotion.
+
+**Gemini is optional**: set `GEMINI_API_KEY` in your local terminal to let a model pick from eight styles. Without a key, the app visibly labels rule-based automatic choices. This initial capture technique animates the **original React-rendered DOM element** and Remotion assembles its screenshots—not a direct TSX import into Remotion.
+
+Full instructions, architecture, limitations and security: **[Runnable Playground guide](docs/18-RUNNABLE-PLAYGROUND.md)**.
 
 ## The exact problem
 
@@ -74,6 +94,7 @@ flowchart TD
 | [`docs/16-COMPONENT-ANIMATION-PLAYGROUND.md`](docs/16-COMPONENT-ANIMATION-PLAYGROUND.md) | **Detailed fly-out/return @ 100% playground implementation spec, architecture, frames, controls, tests and delivery gates** |
 | [`presets/fly-out-return-100.json`](presets/fly-out-return-100.json) | 180-frame storyboard template requiring a verified source component ID |
 | [`docs/17-3D-ORBIT-PLAYGROUND-65.md`](docs/17-3D-ORBIT-PLAYGROUND-65.md) | **3D Orbit at 65%** — detailed implementation spec covering authentic component selection, source React reuse, 240-frame orbit, CSS 3D perspective, QA and implementation gates |
+| [`docs/18-RUNNABLE-PLAYGROUND.md`](docs/18-RUNNABLE-PLAYGROUND.md) | Executable local editor, optional Gemini director, eight effects, frame preview, Remotion MP4 export and actual limitations |
 | [`presets/orbit-3d-65.json`](presets/orbit-3d-65.json) | 240-frame single-component 3D Orbit storyboard template (requires verified real UI source) |
 | [`docs/08-SECURITY-AND-RIGHTS.md`](docs/08-SECURITY-AND-RIGHTS.md) | Host sandboxing, credentials, licenses, provider/privacy handling |
 | [`docs/09-QUALITY-AND-TESTS.md`](docs/09-QUALITY-AND-TESTS.md) | Snapshot parity, motion tests, end-to-end acceptance |
