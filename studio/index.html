@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#080f1d"><title>UI Motion Engine — Playground</title><link rel="stylesheet" href="/app.css"></head>
+<body><div class="shell">
+<header class="topbar"><div class="identity"><div class="mark">✦</div><div><strong>UI Motion Engine</strong><small>Source-faithful motion studio</small></div></div><div class="topmeta"><span id="sourceStatus" class="status">No source connected</span><span id="engineStatus" class="engine">Remotion 4 • Local studio</span></div></header>
+<div class="workspace">
+<aside class="sidebar"><div class="sidebar-head"><span class="eyebrow">01 / SOURCE</span><h2>Connect a website</h2><p>Your actual running React interface. No reconstructed cards.</p></div>
+<form id="connectForm" class="form"><label>Website URL<input id="siteUrl" type="url" value="http://127.0.0.1:5173" required placeholder="http://127.0.0.1:5173"></label>
+<div class="twocol"><label>Width<input id="viewportWidth" type="number" min="360" max="1920" value="1440"></label><label>Height<input id="viewportHeight" type="number" min="360" max="1080" value="810"></label></div>
+<label class="check"><input id="externalAssets" type="checkbox"> Allow remote HTTPS images/fonts <span class="muted">(only if you trust the site)</span></label>
+<button type="submit" class="action primary" id="inspectBtn">Inspect website <span>↗</span></button></form>
+<div class="sidebar-head sub"><span class="eyebrow">02 / COMPONENT</span><h2>Pick an element</h2><p id="count">Inspect the website to discover components.</p></div>
+<div id="targetList" class="targets"><div class="placeholder">Select a real website to see cards, buttons, hero sections and other visible elements.</div></div>
+</aside>
+<main class="mainpanel"><div class="workbar"><div><span class="eyebrow">LIVE COMPOSITION</span><h1>Component Motion Playground</h1></div><div class="pills"><span id="renderMode" class="pill">NO SOURCE</span><span id="frameText" class="pill">Frame 0 / 239</span></div></div>
+<div class="viewport-shell"><div id="canvas" class="canvas"><img id="siteImage" alt="Real browser-rendered website preview" draggable="false"><div id="hitboxes" class="hitboxes"></div><div class="canvas-empty" id="emptyPreview"><div class="empty-symbol">◈</div><h2>Your website, animated</h2><p>Inspect a local React site, select an authentic UI element, and let the director select a cinematic motion style.</p></div></div></div>
+<div class="timelinebar"><div class="timeline-controls"><button id="playBtn" type="button" title="Play/pause" disabled>▶</button><button id="backBtn" type="button" title="Previous frame" disabled>←</button><button id="nextBtn" type="button" title="Next frame" disabled>→</button><span id="timecode">00:00 / 00:08</span><span class="engine muted">Frame-driven preview • 30 FPS</span></div><input type="range" id="seek" min="0" max="239" value="0" disabled><div class="shotsteps"><span>00:00 Original</span><span>Lift</span><span>Motion</span><span>Return</span><span>00:08</span></div></div>
+<div id="notice" class="notice">Ready to connect to your website.</div>
+<div id="outputPanel" class="output" hidden><h3>Render job</h3><div class="progressbar"><div id="progressFill"></div></div><p id="jobMessage"></p><div id="downloadArea"></div></div>
+</main>
+<aside class="inspector"><div class="sidebar-head"><span class="eyebrow">03 / DIRECTION</span><h2>AI Motion Director</h2><p>Not limited to two effects. AI chooses a movement based on your selected component.</p></div>
+<label>Creative direction<textarea id="creativePrompt" rows="4" placeholder="e.g. cinematic sci-fi reveal, subtle depth, focus on download button"></textarea></label>
+<label>Intensity <span class="value" id="intensityValue">65%</span><input id="intensity" type="range" min="0" max="100" value="65"></label>
+<button class="action primary" type="button" id="directBtn" disabled>✦ Choose animation automatically</button><p class="hint" id="modelHint">Gemini is optional. Without its API key, automatic rules choose from all available styles.</p>
+<div class="rule"></div><label>Animation style<select id="style" disabled><option value="fly-out-return">Fly Out & Return</option><option value="orbit-3d">3D Orbit</option><option value="hero-focus">Hero Focus</option><option value="tilt-pop">Tilt & Pop</option><option value="sweep-highlight">Sweep Highlight</option><option value="bounce-focus">Bounce Focus</option><option value="cinematic-pan">Cinematic Pan</option><option value="reveal-stack">Layered Reveal</option></select></label>
+<div id="decisionReason" class="decision">Choose a component to unlock motion styles.</div>
+<div class="rule"></div><span class="eyebrow">04 / OUTPUT</span><div class="fields"><label>FPS<select id="fps"><option>30</option><option>24</option><option>25</option><option>60</option></select></label></div>
+<button class="action secondary" id="previewBtn" disabled>↻ Update frame preview</button><button class="action render" id="renderBtn" disabled>⬇ Render MP4 using Remotion</button>
+<div class="warning"><strong>Authentic source mode</strong><p>Runs animation on the actual React-rendered browser DOM. This first working mode is not an isolated JSX import; it captures the result frame-by-frame before Remotion assembles the MP4. Layout clipping or stacking contexts can limit particular websites.</p></div>
+</aside></div></div><script type="module" src="/app.js"></script></body></html>

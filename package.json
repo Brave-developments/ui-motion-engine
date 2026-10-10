@@ -1,17 +1,33 @@
 {
   "name": "ui-motion-engine",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
   "type": "module",
-  "description": "Source-faithful website-to-Remotion component extraction planning and inspection starter",
-  "engines": { "node": ">=22.12.0" },
+  "description": "Local source-faithful website motion editor with AI direction, Chromium capture and Remotion MP4 render",
+  "engines": {"node": ">=22.12.0"},
   "scripts": {
+    "dev": "node server/main.mjs",
+    "dev:playground": "node server/main.mjs",
     "inspect": "node scripts/inspect-dom.mjs",
     "validate": "node scripts/validate.mjs",
-    "test": "node --test tests/*.test.mjs && npm run validate"
+    "test": "node --test tests/*.test.mjs && npm run validate",
+    "test:engine": "node --test tests/director.test.mjs tests/motion-engine.test.mjs tests/security.test.mjs",
+    "remotion:studio": "remotion studio remotion/index.tsx",
+    "render:pilot": "node scripts/render-pilot.mjs"
   },
   "dependencies": {
     "ajv": "^8.17.1",
-    "playwright": "^1.64.0"
+    "playwright": "^1.64.0",
+    "react": "19.2.0",
+    "react-dom": "19.2.0",
+    "remotion": "4.0.534",
+    "@remotion/bundler": "4.0.534",
+    "@remotion/renderer": "4.0.534"
+  },
+  "devDependencies": {
+    "@remotion/cli": "4.0.534",
+    "@types/react": "^19.2.0",
+    "@types/react-dom": "^19.2.0",
+    "typescript": "^5.9.0"
   }
 }
