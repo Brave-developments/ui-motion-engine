@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "source": {
+    "kind": "authorized-github",
+    "repo": "Brave-developments/fivem-resource-hub",
+    "commit": "EXAMPLE-PIN-REAL-SHA-BEFORE-USE"
+  },
+  "route": "/",
+  "viewport": {
+    "widthCssPx": 1440,
+    "heightCssPx": 900,
+    "deviceScaleFactor": 1,
+    "scrollXCssPx": 0,
+    "scrollYCssPx": 0
+  },
+  "components": [
+    {
+      "id": "pilot-resource-card",
+      "label": "Example only — replace with an inspected real card",
+      "selector": "[data-motion-id='pilot-card']",
+      "renderMode": "unresolved",
+      "sourcePath": null,
+      "verifiedImport": false,
+      "rect": {"x": 400, "y": 300, "width": 300, "height": 220},
+      "visualSource": "browser-dom",
+      "children": [],
+      "assetRefs": [],
+      "warnings": ["Example coordinates and selector only; not verified against FiveM Resource Hub; never render this as authentic source data"]
+    }
+  ],
+  "warnings": ["EXAMPLE ONLY: run a real inspection to populate source SHA, selectors, geometry and assets"]
+}

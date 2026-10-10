@@ -1,0 +1,70 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://example.invalid/ui-motion-engine/ui-manifest.schema.json",
+  "title": "UI Motion Engine Source Manifest v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "source", "viewport", "route", "components"],
+  "properties": {
+    "schemaVersion": {"const": 1},
+    "source": {
+      "type": "object", "additionalProperties": false,
+      "required": ["kind", "repo", "commit"],
+      "properties": {
+        "kind": {"enum": ["local-repository", "authorized-github", "local-running-site"]},
+        "repo": {"type": "string", "minLength": 1},
+        "commit": {"type": "string", "minLength": 1},
+        "checkoutPath": {"type": "string"}
+      }
+    },
+    "route": {"type": "string", "minLength": 1},
+    "viewport": {
+      "type": "object", "additionalProperties": false,
+      "required": ["widthCssPx", "heightCssPx", "deviceScaleFactor", "scrollXCssPx", "scrollYCssPx"],
+      "properties": {
+        "widthCssPx": {"type": "integer", "minimum": 1, "maximum": 10000},
+        "heightCssPx": {"type": "integer", "minimum": 1, "maximum": 10000},
+        "deviceScaleFactor": {"type": "number", "exclusiveMinimum": 0, "maximum": 4},
+        "scrollXCssPx": {"type": "number"},
+        "scrollYCssPx": {"type": "number"}
+      }
+    },
+    "components": {"type": "array", "items": {"$ref": "#/definitions/component"}},
+    "warnings": {"type": "array", "items": {"type": "string"}}
+  },
+  "definitions": {
+    "rect": {
+      "type": "object", "additionalProperties": false,
+      "required": ["x", "y", "width", "height"],
+      "properties": {
+        "x": {"type": "number"}, "y": {"type": "number"},
+        "width": {"type": "number", "minimum": 0},
+        "height": {"type": "number", "minimum": 0}
+      }
+    },
+    "component": {
+      "type": "object", "additionalProperties": false,
+      "required": ["id", "label", "selector", "renderMode", "rect", "visualSource"],
+      "properties": {
+        "id": {"type": "string", "pattern": "^[A-Za-z0-9_-]+$"},
+        "label": {"type": "string", "minLength": 1},
+        "selector": {"type": "string", "minLength": 1},
+        "renderMode": {"enum": ["live", "raster", "recording", "unresolved"]},
+        "sourcePath": {"type": ["string", "null"]},
+        "verifiedImport": {"type": "boolean"},
+        "rect": {"$ref": "#/definitions/rect"},
+        "visualSource": {"enum": ["existing-react-component", "browser-dom", "browser-footage"]},
+        "children": {
+          "type": "array",
+          "items": {
+            "type": "object", "additionalProperties": false,
+            "required": ["id", "selector"],
+            "properties": {"id": {"type": "string", "minLength": 1}, "selector": {"type": "string", "minLength": 1}}
+          }
+        },
+        "assetRefs": {"type": "array", "items": {"type": "string"}},
+        "warnings": {"type": "array", "items": {"type": "string"}}
+      }
+    }
+  }
+}

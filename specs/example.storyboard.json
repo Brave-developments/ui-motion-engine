@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "id": "pilot-illustration-not-ready-to-render",
+  "fps": 30,
+  "output": {"width": 1920, "height": 1080},
+  "shots": [
+    {
+      "id": "extract-first-real-card-when-verified",
+      "startFrame": 0,
+      "durationFrames": 180,
+      "method": "live",
+      "targetId": "pilot-resource-card",
+      "caption": "Use the real site's card, not this example's placeholder",
+      "effects": [
+        {"name": "extract-and-return", "startOffset": 15, "durationFrames": 130, "params": {"scale": 1.6, "rotateYDegrees": 12, "rotateZDegrees": -3, "returnToOrigin": true}},
+        {"name": "focus-glow", "startOffset": 10, "durationFrames": 110, "params": {"intensity": 0.65}}
+      ],
+      "warnings": ["NOT RENDERABLE UNTIL manifest source component is verified/live mode passes parity checks"]
+    }
+  ],
+  "warnings": ["EXAMPLE: timeline and params only; do not treat as validated production storyboard"]
+}

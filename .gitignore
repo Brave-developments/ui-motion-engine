@@ -1,0 +1,16 @@
+node_modules/
+out/
+dist/
+.cache/
+.env
+.env.*
+!.env.example
+*.mp4
+*.mov
+*.webm
+*.png
+*.jpg
+*.jpeg
+*.webp
+*.log
+.DS_Store

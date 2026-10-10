@@ -1,0 +1,17 @@
+{
+  "name": "ui-motion-engine",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Source-faithful website-to-Remotion component extraction planning and inspection starter",
+  "engines": { "node": ">=22.12.0" },
+  "scripts": {
+    "inspect": "node scripts/inspect-dom.mjs",
+    "validate": "node scripts/validate.mjs",
+    "test": "node --test tests/*.test.mjs && npm run validate"
+  },
+  "dependencies": {
+    "ajv": "^8.17.1",
+    "playwright": "^1.64.0"
+  }
+}
