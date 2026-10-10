@@ -1,0 +1,98 @@
+{
+  "schemaVersion": 1,
+  "id": "orbit-3d-65-TEMPLATE-requires-real-target",
+  "fps": 30,
+  "output": {
+    "width": 1920,
+    "height": 1080
+  },
+  "shots": [
+    {
+      "id": "genuine-source-card-3d-orbit",
+      "startFrame": 0,
+      "durationFrames": 240,
+      "method": "live",
+      "targetId": "REPLACE_WITH_VERIFIED_MANIFEST_COMPONENT_ID",
+      "caption": "EXAMPLE ONLY: preserve original website card; this is not a fake card design",
+      "effects": [
+        {
+          "name": "orbit-3d",
+          "startOffset": 24,
+          "durationFrames": 192,
+          "params": {
+            "presetId": "orbit-3d",
+            "intensityPercent": 65,
+            "shotFrames": 240,
+            "entryStartFrame": 24,
+            "entryEndFrame": 59,
+            "orbitStartFrame": 60,
+            "orbitEndFrame": 179,
+            "returnStartFrame": 180,
+            "returnEndFrame": 215,
+            "restoreStartFrame": 216,
+            "liftFrames": 36,
+            "orbitFrames": 120,
+            "returnFrames": 36,
+            "circuitDegrees": 360,
+            "direction": "clockwise",
+            "focusXNormalized": 0.5,
+            "focusYNormalized": 0.46,
+            "orbitRadiusXpx": 169,
+            "orbitRadiusYpx": 59.8,
+            "depthAmplitudePx": 143,
+            "artMaxRadiusXpx": 260,
+            "artMaxRadiusYpx": 92,
+            "artMaxDepthAmplitudePx": 220,
+            "baseScale": 1.208,
+            "artMaxBaseScale": 1.32,
+            "pitchDegreesCap": 5.85,
+            "yawDegreesCap": 11.7,
+            "rollDegreesCap": 1.3,
+            "perspectivePx": 1200,
+            "angularEasing": "ease-in-out-cosine-one-full-circuit",
+            "entryReturnEasing": "smoothstep-exact-endpoints",
+            "maxCanvasWidthRatio": 0.86,
+            "maxCanvasHeightRatio": 0.8,
+            "capProjectedBounds": true,
+            "frontFaceOnly": true,
+            "returnToMeasuredOrigin": true,
+            "freezeApprovedSourceData": true,
+            "allowRealBackendWrites": false
+          }
+        },
+        {
+          "name": "focus-glow",
+          "startOffset": 15,
+          "durationFrames": 201,
+          "params": {
+            "intensity": 0.65,
+            "bindTo": "original-verified-card-element",
+            "visualOnly": true
+          }
+        },
+        {
+          "name": "spotlight-dim",
+          "startOffset": 24,
+          "durationFrames": 192,
+          "params": {
+            "dimOpacity": 0.325,
+            "backgroundBlurPx": 5.2,
+            "excludeExtractedSourceCard": true
+          }
+        }
+      ],
+      "warnings": [
+        "TEMPLATE ONLY: replace targetId using a unique verified source manifest component ID.",
+        "Orbiting a genuine React component requires actual source import + pixel parity; no inferred JSX allowed.",
+        "65% means full spatial circuit at 65% amplitude; projected-safe bounds may reduce effective radii/zoom.",
+        "No imaginary backside, no Fire counter change, no real resource download or database write.",
+        "End/start continuity must be proven at frame 23/24, 59/60, 179/180 and 215/216."
+      ]
+    }
+  ],
+  "warnings": [
+    "This is a render-target specification, not a currently implemented composition.",
+    "Requires pinned source SHA, allowed local checkout, original CSS/fonts/assets, approved data snapshot and geometric coordinates.",
+    "The storyboard schema validates structural shape; runtime must separately validate frame boundaries, perspective and source identity."
+  ]
+}
