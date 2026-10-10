@@ -2,7 +2,7 @@
 
 **A source-faithful React website → cinematic Remotion video workflow.**
 
-> **Repository status (v0.2):** a runnable local website inspector, motion-editor UI, eight frame-indexed styles, optional Gemini animation director, original-browser-DOM capture and Remotion MP4 assembly are implemented. **Full source-TSX component imports, child-level editing and production visual QA are not yet implemented.** Browser-to-MP4 integration is pending a real machine verification.
+> **Repository status (v0.2):** a runnable local website inspector, motion-editor UI, eight frame-indexed styles, optional Gemini animation director, original-browser-DOM capture and Remotion MP4 assembly are implemented. **Full source-TSX component imports, child-level editing and production visual QA are not yet implemented.** Chromium-to-Remotion MP4 export has passed a synthetic-site integration test in GitHub Actions; the actual FiveM site has not yet been tested end-to-end.
 
 ## Run the local motion playground
 
@@ -22,7 +22,7 @@ Open **http://127.0.0.1:5085**, inspect **http://127.0.0.1:5173/free** (with Fiv
 
 **Gemini is optional**: set `GEMINI_API_KEY` in your local terminal to let a model pick from eight styles. Without a key, the app visibly labels rule-based automatic choices. This initial capture technique animates the **original React-rendered DOM element** and Remotion assembles its screenshots—not a direct TSX import into Remotion.
 
-Full instructions, architecture, limitations and security: **[Runnable Playground guide](docs/18-RUNNABLE-PLAYGROUND.md)**.
+Full instructions, architecture, limitations and security: **[Runnable Playground guide](docs/18-RUNNABLE-PLAYGROUND.md)**. [Automated Chromium + Remotion video export test](https://github.com/Brave-developments/ui-motion-engine/actions/runs/38026533003) passed.
 
 ## The exact problem
 
