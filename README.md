@@ -71,6 +71,8 @@ flowchart TD
 | [`docs/05-MOTION-DESIGN.md`](docs/05-MOTION-DESIGN.md) | Flying-card motion, child animation, compositing details |
 | [`docs/06-AI-AGENT-CONTRACT.md`](docs/06-AI-AGENT-CONTRACT.md) | Agent responsibilities, allowed actions, structured prompts |
 | [`docs/07-EDITOR-AND-WORKFLOW.md`](docs/07-EDITOR-AND-WORKFLOW.md) | UI flow, preview, render and manual override |
+| [`docs/16-COMPONENT-ANIMATION-PLAYGROUND.md`](docs/16-COMPONENT-ANIMATION-PLAYGROUND.md) | **Detailed fly-out/return @ 100% playground implementation spec, architecture, frames, controls, tests and delivery gates** |
+| [`presets/fly-out-return-100.json`](presets/fly-out-return-100.json) | 180-frame storyboard template requiring a verified source component ID |
 | [`docs/08-SECURITY-AND-RIGHTS.md`](docs/08-SECURITY-AND-RIGHTS.md) | Host sandboxing, credentials, licenses, provider/privacy handling |
 | [`docs/09-QUALITY-AND-TESTS.md`](docs/09-QUALITY-AND-TESTS.md) | Snapshot parity, motion tests, end-to-end acceptance |
 | [`docs/10-ROADMAP.md`](docs/10-ROADMAP.md) | Build phases, concrete tasks, stop/go gates |
