@@ -66,7 +66,7 @@ npm run render:pilot -- --url http://127.0.0.1:5173/free --prompt "cinematic sci
 
 ## Honest current limitations and next milestones
 
-This is a **runnable local workflow implementation**, but end-to-end MP4 export still requires verification in a real Windows environment with downloaded NPM dependencies, Chromium, Remotion browser binary and a running site. Unit tests passing does not prove a video successfully renders.
+This is a **runnable local workflow implementation**, and a synthetic-source Chromium-to-Remotion H.264 MP4 smoke test **passed in GitHub Actions on Linux**. The test does not prove that a private real FiveM Hub page will work without clipping, backend or asset issues; test with your locally running website on Windows before publishing.
 
 The source-faithful approach uses actual React-generated DOM pixels. It is not isolated editable React JSX. Individual card children cannot yet be detached/remixed, and a browser source may have clipping, stacking contexts or animations that make particular shots less convincing. A CSS shadow spotlight is used; true isolated backdrop blur requires separate alpha layers. A fully imported source-component adapter plus pixel-diff gate remains future work; do not claim these exist.
 
@@ -83,3 +83,5 @@ npm run render:pilot      # source-faithful scripted video pilot
 ```
 
 The browser/editor API exposes `/api/status`, `/api/inspect`, `/api/snapshot`, `/api/select`, `/api/direct`, `/api/frame`, `/api/render`, `/api/jobs/:id`, and video/manifest/qa artifacts.
+
+**Automated integration evidence:** [Successful Chromium + Remotion smoke job](https://github.com/Brave-developments/ui-motion-engine/actions/runs/38026533003) (12 captured source frames combined into a valid MP4; original DOM geometry and CSS restore test passed). The original and returned PNG bytes differed, so this is **not** a pixel-diff fidelity certification.
