@@ -37,6 +37,7 @@ Calculate transforms in **composed video coordinates**. Apply CSS `transformOrig
 | `thumbnail-pop` | Original image child | mask, scale, parallax, z | Original image file and crop |
 | `fire-particles` | Fire reaction / overlay | count, deterministic seed, gravity | VFX only, never increment live counter |
 | `typed-search` | Browser action clip | keyword, cursor, rate | Recorded real page/action and response |
+| `orbit-3d` | One selected genuine React component | elliptical X/Y/Z path, source-centred extraction/restore, bounded perspective, face-to-camera | One complete path; no invented backside UI; exact identity swaps; see [3D Orbit specification](17-3D-ORBIT-PLAYGROUND-65.md) |
 | `orbit-cards` | Multiple imported cards | depth, arc, spacing | Only source-mapped cards; no invented values |
 | `logo-reveal` | Original logo asset | stroke/scale/opacity | Preserve original artwork |
 | `camera-journey` | Composite scene | crop, pan, zoom, ease | Maintain legibility and framing |
