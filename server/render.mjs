@@ -5,6 +5,7 @@ import { computePose } from './motion.mjs';
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 export const jobs=new Map();
 let busy=false;
+export function isRendering(){return busy;}
 const sleep=ms=>new Promise(r=>setTimeout(r,ms));
 export function getJob(id){const result=jobs.get(id);return result?{...result,absolutePath:undefined}:null;}
 export async function renderProject(session,{style,intensity,fps=30,width=1920,height=1080}) {
@@ -44,7 +45,7 @@ export async function renderProject(session,{style,intensity,fps=30,width=1920,h
       result.status='ready';result.progress=100;
       await fs.writeFile(path.join(out,'qa.json'),JSON.stringify({kind:'per-frame original DOM replay',renderedWith:'Remotion',status:'exported',frames,source:session.config.url,target:session.current.id,notes:['Visual pixel-parity with static original React import is not established by this DOM capture route','For detailed proof, compare original f0 to f239; inspect z-index conflicts by reviewing video.']},null,2));
     } catch(e){result.status='failed';result.error=String(e?.stack||e).slice(0,1800);}
-    finally{busy=false;result.completed=frames;}
+    finally{busy=false;}
   })();
   return getJob(id);
 }
