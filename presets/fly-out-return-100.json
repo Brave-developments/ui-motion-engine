@@ -1,0 +1,76 @@
+{
+  "schemaVersion": 1,
+  "id": "fly-out-return-100-TEMPLATE-requires-real-target",
+  "fps": 30,
+  "output": {
+    "width": 1920,
+    "height": 1080
+  },
+  "shots": [
+    {
+      "id": "fly-out-return-six-second-shot",
+      "startFrame": 0,
+      "durationFrames": 180,
+      "method": "live",
+      "targetId": "REPLACE_WITH_VERIFIED_MANIFEST_COMPONENT_ID",
+      "caption": "SOURCE-FAITHFUL TEMPLATE: use authentic React UI only",
+      "effects": [
+        {
+          "name": "extract-and-return",
+          "startOffset": 15,
+          "durationFrames": 130,
+          "params": {
+            "presetId": "fly-out-return",
+            "intensityPercent": 100,
+            "liftFrames": 36,
+            "holdFrames": 55,
+            "returnFrames": 39,
+            "focusXNormalized": 0.5,
+            "focusYNormalized": 0.46,
+            "scaleTarget": 1.85,
+            "rotateYDegrees": 16,
+            "rotateZDegrees": -4,
+            "perspectivePx": 1200,
+            "shadowBlurPx": 70,
+            "shadowOpacity": 0.45,
+            "fitScaleMaxWidthRatio": 0.86,
+            "fitScaleMaxHeightRatio": 0.78,
+            "returnToMeasuredOrigin": true,
+            "interpolation": "bounded-eased-with-exact-endpoints",
+            "frames": "15 identity; 51 peak; 106 begin return; 145 identity/swap"
+          }
+        },
+        {
+          "name": "focus-glow",
+          "startOffset": 10,
+          "durationFrames": 135,
+          "params": {
+            "intensity": 1,
+            "applyTo": "selected-original-element-outline",
+            "preserveOriginalCss": true
+          }
+        },
+        {
+          "name": "spotlight-dim",
+          "startOffset": 15,
+          "durationFrames": 130,
+          "params": {
+            "dimOpacity": 0.68,
+            "backgroundBlurPx": 7,
+            "excludeExtractedSourceCard": true
+          }
+        }
+      ],
+      "warnings": [
+        "TEMPLATE ONLY: replace targetId with inspected source manifest component ID.",
+        "LIVE render requires verified original React component import and visual parity.",
+        "100% artistic targets can be capped to prevent clipping or unreadable content.",
+        "Child thumbnail or Fire animations are only enabled after authentic child IDs are verified."
+      ]
+    }
+  ],
+  "warnings": [
+    "Do not treat this template as a validated renderable shot; original site source, screenshot, approved data, source SHA and real DOM geometry are required.",
+    "Effect-specific parameters must be checked by runtime validation beyond storyboard JSON Schema."
+  ]
+}
